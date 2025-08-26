@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приглашение на свадьбу</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: #dfeee2; /* пастельно-зелёный фон */
+      color: #2d2d2d;
+      text-align: center;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 50px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 3em;
+      font-family: 'Great Vibes', cursive;
+      margin: 0;
+      color: #2d4d38;
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2em; /* Увеличил размер */
+      margin: 10px 0 25px;
+      color: #2d4d38;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 15px 0;
+    }
+
+    .date {
+      font-size: 2.2em;
+      margin: 25px 0;
+      font-weight: bold;
+      color: #2d4d38;
+    }
+
+    .place {
+      margin-top: 25px;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .countdown {
+      margin-top: 35px;
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #3a5f47;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 1.4em;
+      font-family: 'Great Vibes', cursive;
+      color: #2d4d38;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Дорогие гости!</h2>
+    <p>В этот особенный день мы хотим быть в окружении самых близких и дорогих нам людей.</p>
+    <p>С огромной радостью приглашаем вас на нашу свадьбу</p>
+
+    <h1>Иван & Валерия</h1>
+
+    <div class="date">20.09.2025</div>
+
+    <div class="place">
+      Место проведения: у мамы на участке 🌿
+    </div>
+
+    <div class="countdown" id="countdown"></div>
+
+    <footer>
+      С любовью, Иван и Валерия
+    </footer>
+  </div>
+
+  <script>
+    const weddingDate = new Date("September 20, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "Наш день настал! 💍";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        "До свадьбы осталось: " + days + " дн. " + hours + " ч. " + minutes + " мин. " + seconds + " сек.";
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
